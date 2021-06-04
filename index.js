@@ -1,22 +1,22 @@
-const { fetchMyIP, fetchCoordsByIP } = require("./iss");
+//const { fetchMyIP, fetchCoordsByIP,fetchISSFlyOverTimes } = require("./iss");
+const {fetchISSFlyOverTimes} = require('./iss');
+// fetchMyIP((error, ip) => {
+//   if (error) {
+//     console.log("It didn't work!", error);
+//     return;
+//   }
+//   console.log("It worked! Returned IP:", ip);
+//   this.ip = ip;
+// });
 
-fetchMyIP((error, ip) => {
-  if (error) {
-    console.log("It didn't work!", error);
-    return;
-  }
-  console.log("It worked! Returned IP:", ip);
-  this.ip = ip;
-});
+// fetchCoordsByIP("162.245.144.188", (error, coordinates) => {
+//   if (error) {
+//     console.log("It didn't work!", error);
+//     return;
+//   }
 
-fetchCoordsByIP("162.245.144.188", (error, coordinates) => {
-  if (error) {
-    console.log("It didn't work!", error);
-    return;
-  }
-
-  console.log("It worked! Returned coordinates:", coordinates);
-});
+//   console.log("It worked! Returned coordinates:", coordinates);
+// });
 
 /**
  * Makes a single API request to retrieve upcoming ISS fly over times the for the given lat/lng coordinates.
@@ -28,7 +28,6 @@ fetchCoordsByIP("162.245.144.188", (error, coordinates) => {
  *   - The fly over times as an array of objects (null if error). Example:
  *     [ { risetime: 134564234, duration: 600 }, ... ]
  */
-const { fetchISSFlyOverTimes } = require("./iss");
 
 const exampleCoords = { latitude: "49.27670", longitude: "-123.13000" };
 
