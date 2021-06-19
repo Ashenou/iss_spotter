@@ -13,11 +13,17 @@ const fetchCoordsByIP = function (body) {
   const ip = JSON.parse(body).ip;
   return request(`https://freegeoip.app/json/${ip}`);
 };
+/*
+ * Requests data from api.open-notify.org using provided lat/long data
+ * Input: JSON body containing geo data response from freegeoip.app
+ * Returns: Promise of request for fly over data, returned as JSON string
+ */
 const fetchISSFlyOverTimes = function (body) {
   const { latitude, longitude } = JSON.parse(body);
   const url = `http://api.open-notify.org/iss-pass.json?lat=${latitude}&lon=${longitude}`;
   return request(url);
 };
+
 const nextISSTimesForMyLocation = function () {
   return fetchMyIP()
     .then(fetchCoordsByIP)
@@ -27,6 +33,10 @@ const nextISSTimesForMyLocation = function () {
       return response;
     });
 };
-//module.exports = { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes };
-module.exports = { nextISSTimesForMyLocation,fetchISSFlyOverTimes };
-//module.exports = { fetchMyIP };
+
+module.exports = {
+  nextISSTimesForMyLocation,
+  fetchMyIP,
+  fetchCoordsByIP,
+  fetchISSFlyOverTimes,
+};
